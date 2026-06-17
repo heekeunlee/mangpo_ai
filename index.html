@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>망포 AI 클럽 — 커리큘럼</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f6f5f3;
+      --surface: #ffffff;
+      --border: rgba(0,0,0,0.08);
+      --border-strong: rgba(0,0,0,0.15);
+      --text-primary: #1a1a1a;
+      --text-secondary: #555;
+      --text-muted: #999;
+      --done-line: #1D9E75;
+      --done-bg: #E1F5EE;
+      --done-text: #0F6E56;
+      --plan-line: #7F77DD;
+      --plan-bg: #EEEDFE;
+      --plan-text: #3C3489;
+      --adv-line: #378ADD;
+      --adv-bg: #E6F1FB;
+      --adv-text: #185FA5;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+    .logo span { color: var(--plan-line); }
+
+    .header-meta { font-size: 0.8rem; color: var(--text-muted); }
+
+    main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    /* Progress bar */
+    .progress-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1rem;
+    }
+
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 700; line-height: 1; }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+    .stat-num.done { color: var(--done-line); }
+    .stat-num.plan { color: var(--plan-line); }
+    .stat-num.total { color: var(--text-primary); }
+
+    .progress-bar-wrap {
+      grid-column: 1 / -1;
+      height: 8px;
+      background: #eee;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--done-line), var(--plan-line));
+      border-radius: 99px;
+      width: calc(4 / 16 * 100%);
+      transition: width 1s ease;
+    }
+
+    /* Phase section */
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 2rem 0 0.875rem;
+    }
+
+    .phase-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .phase-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.125rem 1rem 1.25rem;
+      border-left: 4px solid var(--border-strong);
+      position: relative;
+      transition: box-shadow 0.15s;
+    }
+
+    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+
+    .card.done { border-left-color: var(--done-line); }
+    .card.plan { border-left-color: var(--plan-line); }
+    .card.adv  { border-left-color: var(--adv-line); }
+
+    .card-week {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 99px;
+    }
+
+    .tag-done { background: var(--done-bg); color: var(--done-text); }
+    .tag-plan { background: var(--plan-bg); color: var(--plan-text); }
+    .tag-adv  { background: var(--adv-bg);  color: var(--adv-text); }
+
+    /* Badge */
+    .badge-done {
+      position: absolute;
+      top: 0.875rem; right: 0.875rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: var(--done-bg);
+      color: var(--done-text);
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+
+    /* Tips box */
+    .tips {
+      margin-top: 2.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .tips-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .tip-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .tip-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .tip-text { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+    .tip-text strong { color: var(--text-primary); font-weight: 700; }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">망포 <span>AI</span> 클럽</div>
+  <div class="header-meta">주 1회 오프라인 실습 세미나</div>
+</header>
+
+<main>
+
+  <!-- 진행 현황 -->
+  <div class="progress-section">
+    <div class="stat">
+      <div class="stat-num done">4</div>
+      <div class="stat-label">완료 세션</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num plan">12</div>
+      <div class="stat-label">예정 세션</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num total">16</div>
+      <div class="stat-label">전체 세션</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" style="color: var(--adv-line);">25%</div>
+      <div class="stat-label">진행률</div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- 완료 세션 -->
+  <div class="phase-header">
+    <div class="phase-dot" style="background: var(--done-line);"></div>
+    <div class="phase-title">완료된 세션</div>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="card done">
+      <div class="badge-done">✓ 완료</div>
+      <div class="card-week">세션 A</div>
+      <div class="card-title">웹앱 만들어 GitHub에 배포하기</div>
+      <div class="card-desc">클로드로 HTML/CSS 생성 → GitHub Pages로 세상에 공개</div>
+      <div class="tag-row">
+        <span class="tag tag-done">배포</span>
+        <span class="tag tag-done">GitHub</span>
+      </div>
+    </div>
+
+    <div class="card done">
+      <div class="badge-done">✓ 완료</div>
+      <div class="card-week">세션 B</div>
+      <div class="card-title">클로드 코드로 대시보드 만들기</div>
+      <div class="card-desc">데이터 시각화 대시보드를 코드 없이 완성</div>
+      <div class="tag-row">
+        <span class="tag tag-done">Claude Code</span>
+        <span class="tag tag-done">시각화</span>
+      </div>
+    </div>
+
+    <div class="card done">
+      <div class="badge-done">✓ 완료</div>
+      <div class="card-week">세션 C</div>
+      <div class="card-title">클로드 코워크로 카카오톡 알림 받기</div>
+      <div class="card-desc">자동화 흐름 구성 → 카톡으로 결과 실시간 수신</div>
+      <div class="tag-row">
+        <span class="tag tag-done">자동화</span>
+        <span class="tag tag-done">카카오톡</span>
+      </div>
+    </div>
+
+    <div class="card done">
+      <div class="badge-done">✓ 완료</div>
+      <div class="card-week">세션 D</div>
+      <div class="card-title">여행 일정 짜고 지도에 띄우기</div>
+      <div class="card-desc">클로드로 여행 계획 생성 → 구글 지도·인터랙티브 지도로 시각화</div>
+      <div class="tag-row">
+        <span class="tag tag-done">여행</span>
+        <span class="tag tag-done">지도</span>
+        <span class="tag tag-done">시각화</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 1단계 -->
+  <div class="phase-header">
+    <div class="phase-dot" style="background: var(--plan-line);"></div>
+    <div class="phase-title">1단계 — 일상 밀착 실습 (1~4주차)</div>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="card plan">
+      <div class="card-week">1주차</div>
+      <div class="card-title">나만의 블로그 글 써서 올리기</div>
+      <div class="card-desc">클로드로 글 초안 작성 → 티스토리·브런치·노션에 실제 발행</div>
+      <div class="tag-row">
+        <span class="tag tag-plan">글쓰기</span>
+        <span class="tag tag-plan">블로그</span>
+        <span class="tag tag-plan">노션</span>
+      </div>
+    </div>
+
+    <div class="card plan">
+      <div class="card-week">2주차</div>
+      <div class="card-title">유튜브·영상 요약 & 정리봇 만들기</div>
+      <div class="card-desc">영상 링크 넣으면 핵심 요약 + 공부 노트 자동 생성</div>
+      <div class="tag-row">
+        <span class="tag tag-plan">요약</span>
+        <span class="tag tag-plan">유튜브</span>
+      </div>
+    </div>
+
+    <div class="card plan">
+      <div class="card-week">3주차</div>
+      <div class="card-title">나만의 챗봇 만들어 친구에게 공유</div>
+      <div class="card-desc">요리·여행·육아 전문가 챗봇 → 링크로 공유</div>
+      <div class="tag-row">
+        <span class="tag tag-plan">챗봇</span>
+        <span class="tag tag-plan">공유</span>
+      </div>
+    </div>
+
+    <div class="card plan">
+      <div class="card-week">4주차</div>
+      <div class="card-title">엑셀·표 데이터를 AI로 분석하기</div>
+      <div class="card-desc">가계부·매출표 업로드 → 인사이트 뽑기, 차트 자동 생성</div>
+      <div class="tag-row">
+        <span class="tag tag-plan">엑셀</span>
+        <span class="tag tag-plan">데이터 분석</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 2단계 -->
+  <div class="phase-header">
+    <div class="phase-dot" style="background: var(--plan-line);"></div>
+    <div class="phase-title">2단계 — 콘텐츠 생산자 되기 (5~8주차)</div>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="card plan">
+      <div class="card-week">5주차</div>
+      <div class="card-title">인스타·SNS 콘텐츠 공장 만들기</div>
+      <div class="card-desc">주제 하나로 인스타 캡션 10개 + 해시태그 자동 생성</div>
+      <div class="tag-row">
+        <span class="tag tag-plan">SNS</span>
+        <span class="tag tag-plan">마케팅</span>
+      </div>
+    </div>
+
+    <div class="card plan">
+      <div class="card-week">6주차</div>
+      <div class="card-title">PDF 계약서·문서 읽고 요약하기</div>
+      <div class="card-desc">임대차계약서·보험약관 PDF → 핵심 조항 한눈에</div>
+      <div class="tag-row">
+        <span class="tag tag-plan">PDF</span>
+        <span class="tag tag-plan">문서 분석</span>
+      </div>
+    </div>
+
+    <div class="card plan">
+      <div class="card-week">7주차</div>
+      <div class="card-title">이메일·제안서 AI로 10초 만에 작성</div>
+      <div class="card-desc">상황만 말하면 격식체 이메일·비즈니스 제안서 완성</div>
+      <div class="tag-row">
+        <span class="tag tag-plan">글쓰기</span>
+        <span class="tag tag-plan">업무</span>
+      </div>
+    </div>
+
+    <div class="card plan">
+      <div class="card-week">8주차</div>
+      <div class="card-title">이미지 생성 + 썸네일 디자인</div>
+      <div class="card-desc">클로드 + 이미지 AI(Ideogram 등)로 블로그 썸네일 제작</div>
+      <div class="tag-row">
+        <span class="tag tag-plan">이미지</span>
+        <span class="tag tag-plan">디자인</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 3단계 -->
+  <div class="phase-header">
+    <div class="phase-dot" style="background: var(--adv-line);"></div>
+    <div class="phase-title">3단계 — 자동화로 시간 벌기 (9~12주차)</div>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="card adv">
+      <div class="card-week">9주차</div>
+      <div class="card-title">뉴스 자동 요약 → 매일 아침 카톡 받기</div>
+      <div class="card-desc">관심 키워드 뉴스 수집 + 요약 → 매일 카카오톡 자동 발송</div>
+      <div class="tag-row">
+        <span class="tag tag-adv">자동화</span>
+        <span class="tag tag-adv">스케줄러</span>
+        <span class="tag tag-adv">카카오톡</span>
+      </div>
+    </div>
+
+    <div class="card adv">
+      <div class="card-week">10주차</div>
+      <div class="card-title">내 사업·쇼핑몰 소개 페이지 만들기</div>
+      <div class="card-desc">랜딩 페이지 자동 생성 → GitHub Pages 배포 → 도메인 연결</div>
+      <div class="tag-row">
+        <span class="tag tag-adv">랜딩페이지</span>
+        <span class="tag tag-adv">배포</span>
+      </div>
+    </div>
+
+    <div class="card adv">
+      <div class="card-week">11주차</div>
+      <div class="card-title">구글 시트 + AI로 업무 자동화</div>
+      <div class="card-desc">구글 시트 데이터 → 자동 분류·정리·리포트 생성</div>
+      <div class="tag-row">
+        <span class="tag tag-adv">구글시트</span>
+        <span class="tag tag-adv">자동화</span>
+      </div>
+    </div>
+
+    <div class="card adv">
+      <div class="card-week">12주차</div>
+      <div class="card-title">나만의 AI 비서 워크플로 완성</div>
+      <div class="card-desc">각자 일상의 반복 업무를 AI로 대체하는 개인 자동화 설계</div>
+      <div class="tag-row">
+        <span class="tag tag-adv">종합</span>
+        <span class="tag tag-adv">개인화</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 운영 팁 -->
+  <div class="tips">
+    <div class="tips-title">운영 팁</div>
+    <div class="tips-grid">
+      <div class="tip-item">
+        <div class="tip-icon">⏱</div>
+        <div class="tip-text"><strong>60분 구조</strong><br>도입 10분 → 시연 20분 → 혼자 실습 20분 → 공유·Q&A 10분</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">📲</div>
+        <div class="tip-text"><strong>단톡방 인증</strong><br>실습 결과물을 카톡 단톡방에 올리게 하면 성취감 + 출석률 ↑</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">🎯</div>
+        <div class="tip-text"><strong>주제 선정 기준</strong><br>"오늘 집에 가서 바로 써먹을 수 있나?"에 Yes면 채택</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">🏁</div>
+        <div class="tip-text"><strong>12주차 발표</strong><br>내 AI 비서 발표로 마무리 → 수료 동기부여 극대화</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>망포 AI 클럽 · 커리큘럼 대시보드 · 2025</footer>
+
+</main>
+
+</body>
+</html>
