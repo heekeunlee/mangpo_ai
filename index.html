@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=1200" />
   <title>망포 AI 클럽 — 커리큘럼</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
@@ -33,6 +33,7 @@
       background: var(--bg);
       color: var(--text1);
       min-height: 100vh;
+      min-width: 1200px;
     }
 
     /* ── HEADER ── */
@@ -43,9 +44,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 20;
     }
 
     .logo {
@@ -68,10 +66,7 @@
       letter-spacing: 0.06em;
     }
 
-    .header-right {
-      font-size: 0.78rem;
-      color: var(--text3);
-    }
+    .header-right { font-size: 0.78rem; color: var(--text3); }
 
     /* ── HERO ── */
     .hero {
@@ -82,7 +77,7 @@
     }
 
     .hero-title {
-      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-size: 2.75rem;
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1.15;
@@ -90,10 +85,7 @@
       margin-bottom: 0.625rem;
     }
 
-    .hero-title em {
-      font-style: normal;
-      color: var(--purple);
-    }
+    .hero-title em { font-style: normal; color: var(--purple); }
 
     .hero-sub {
       font-size: 0.9rem;
@@ -103,7 +95,6 @@
       margin-bottom: 2rem;
     }
 
-    /* ── STATS ── */
     .stats-row {
       display: inline-flex;
       border: 1px solid var(--border);
@@ -112,12 +103,7 @@
       background: var(--bg);
     }
 
-    .stat {
-      padding: 1rem 2rem;
-      text-align: center;
-      position: relative;
-    }
-
+    .stat { padding: 1rem 2rem; text-align: center; position: relative; }
     .stat + .stat { border-left: 1px solid var(--border); }
 
     .stat-num {
@@ -141,7 +127,6 @@
 
     .progress-fill {
       height: 100%;
-      width: 25%;
       background: linear-gradient(90deg, var(--green), var(--purple));
       border-radius: 99px;
     }
@@ -155,14 +140,10 @@
     }
 
     /* ── MAIN ── */
-    main {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 2.5rem 2rem 5rem;
-    }
+    main { max-width: 1200px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
 
     /* ── SECTION ── */
-    .section { margin-bottom: 2.5rem; }
+    .section { margin-bottom: 2.75rem; }
 
     .section-header {
       display: flex;
@@ -179,9 +160,9 @@
       letter-spacing: 0.06em;
     }
 
-    .pill-done   { background: var(--green-bg);   color: var(--green);  border: 1px solid var(--green-border); }
-    .pill-plan   { background: var(--purple-bg);  color: var(--purple); border: 1px solid var(--purple-border); }
-    .pill-adv    { background: var(--blue-bg);    color: var(--blue);   border: 1px solid var(--blue-border); }
+    .pill-done { background: var(--green-bg);  color: var(--green);  border: 1px solid var(--green-border); }
+    .pill-plan { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+    .pill-adv  { background: var(--blue-bg);   color: var(--blue);   border: 1px solid var(--blue-border); }
 
     .section-title { font-size: 1rem; font-weight: 700; }
     .section-meta  { font-size: 0.78rem; color: var(--text3); margin-left: auto; }
@@ -194,11 +175,7 @@
       overflow: hidden;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.875rem;
-    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 
     thead tr {
       background: var(--bg);
@@ -206,9 +183,9 @@
     }
 
     thead th {
-      padding: 0.75rem 1.125rem;
+      padding: 0.7rem 1rem;
       text-align: left;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.09em;
@@ -224,50 +201,64 @@
     tbody tr:last-child { border-bottom: none; }
     tbody tr:hover { background: #f9fafc; }
 
-    td {
-      padding: 1rem 1.125rem;
-      vertical-align: middle;
-    }
+    td { padding: 0.9rem 1rem; vertical-align: top; }
 
-    /* columns */
-    .col-session { width: 80px; white-space: nowrap; }
-    .col-icon    { width: 44px; text-align: center; font-size: 1.25rem; }
-    .col-title   { min-width: 200px; }
-    .col-desc    { color: var(--text2); font-size: 0.8rem; line-height: 1.6; }
-    .col-tags    { width: 220px; }
-    .col-status  { width: 90px; text-align: center; }
+    /* column widths */
+    .col-no    { width: 72px; white-space: nowrap; vertical-align: middle; }
+    .col-icon  { width: 40px; text-align: center; font-size: 1.2rem; vertical-align: middle; }
+    .col-title { width: 220px; vertical-align: middle; }
+    .col-desc  { width: 260px; }
+    .col-skill { }
+    .col-status{ width: 82px; text-align: center; vertical-align: middle; }
 
     .session-label {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       color: var(--text3);
       letter-spacing: 0.06em;
     }
 
-    .title-text { font-weight: 700; color: var(--text1); line-height: 1.4; }
+    .title-text { font-weight: 700; color: var(--text1); line-height: 1.4; font-size: 0.9rem; }
 
-    /* tags */
-    .tag-row { display: flex; flex-wrap: wrap; gap: 4px; }
+    .desc-text { font-size: 0.78rem; color: var(--text2); line-height: 1.65; }
 
-    .tag {
-      font-size: 0.63rem;
-      font-weight: 500;
-      padding: 2px 8px;
-      border-radius: 99px;
+    /* skill notes */
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
-    .tag-g { background: var(--green-bg);  color: var(--green);  border: 1px solid var(--green-border); }
-    .tag-p { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
-    .tag-b { background: var(--blue-bg);   color: var(--blue);   border: 1px solid var(--blue-border); }
+    .skill-list li {
+      font-size: 0.75rem;
+      color: var(--text2);
+      line-height: 1.5;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .skill-list li::before {
+      content: '·';
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0px;
+    }
+
+    .skill-list li span {
+      font-weight: 700;
+      color: var(--text1);
+    }
 
     /* status badge */
     .status {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 99px;
       white-space: nowrap;
     }
@@ -275,7 +266,6 @@
     .status-done { background: var(--green-bg);  color: var(--green);  border: 1px solid var(--green-border); }
     .status-soon { background: #f9fafb;           color: var(--text3);  border: 1px solid var(--border); }
 
-    /* row accent */
     tr.row-done td:first-child { border-left: 3px solid var(--green); }
     tr.row-plan td:first-child { border-left: 3px solid var(--purple); }
     tr.row-adv  td:first-child { border-left: 3px solid var(--blue); }
@@ -300,15 +290,11 @@
 
     .tips-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
     }
 
-    .tip {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
+    .tip { display: flex; gap: 12px; align-items: flex-start; }
 
     .tip-num {
       width: 28px; height: 28px;
@@ -326,7 +312,6 @@
     .tip-body strong { font-size: 0.82rem; font-weight: 700; color: var(--text1); display: block; margin-bottom: 3px; }
     .tip-body span   { font-size: 0.77rem; color: var(--text2); line-height: 1.6; }
 
-    /* ── FOOTER ── */
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -337,12 +322,6 @@
     }
 
     footer a { color: var(--purple); text-decoration: none; }
-
-    @media (max-width: 700px) {
-      .col-desc, .col-tags { display: none; }
-      header { padding: 1rem 1.25rem; }
-      main { padding: 1.5rem 1rem 4rem; }
-    }
   </style>
 </head>
 <body>
@@ -356,7 +335,7 @@
 </header>
 
 <div class="hero">
-  <h1 class="hero-title">코알못도 AI로<br><em>실생활을 바꾸는</em> 16주</h1>
+  <h1 class="hero-title">코알못도 AI로<br><em>실생활을 바꾸는</em> 프로그램</h1>
   <p class="hero-sub">매주 실습 한 가지, 오늘 배우고 오늘 써먹는 커리큘럼</p>
 
   <div class="stats-row">
@@ -365,77 +344,97 @@
       <div class="stat-label">완료 세션</div>
     </div>
     <div class="stat">
-      <div class="stat-num" style="color:var(--purple)">12</div>
+      <div class="stat-num" style="color:var(--purple)">20</div>
       <div class="stat-label">예정 세션</div>
     </div>
     <div class="stat">
-      <div class="stat-num" style="color:var(--text1)">16</div>
+      <div class="stat-num" style="color:var(--text1)">24</div>
       <div class="stat-label">전체 세션</div>
     </div>
     <div class="stat">
-      <div class="stat-num" style="color:var(--blue)">25%</div>
+      <div class="stat-num" style="color:var(--blue)">17%</div>
       <div class="stat-label">진행률</div>
     </div>
   </div>
 
   <div class="progress-wrap">
-    <div class="progress-track"><div class="progress-fill"></div></div>
-    <div class="progress-label"><span>시작</span><span>4 / 16 완료</span><span>수료</span></div>
+    <div class="progress-track"><div class="progress-fill" style="width:17%"></div></div>
+    <div class="progress-label"><span>시작</span><span>4 / 24 완료</span><span>수료</span></div>
   </div>
 </div>
 
 <main>
 
-  <!-- 완료 세션 -->
+  <!-- ══ 완료 세션 ══ -->
   <div class="section">
     <div class="section-header">
       <span class="section-pill pill-done">✓ 완료</span>
       <span class="section-title">이미 진행한 세션</span>
-      <span class="section-meta">세션 A – D · 4회</span>
+      <span class="section-meta">세션 A – D · 4회 완료</span>
     </div>
     <div class="tbl-wrap">
       <table>
         <thead>
           <tr>
-            <th class="col-session">세션</th>
+            <th class="col-no">세션</th>
             <th class="col-icon"></th>
             <th class="col-title">주제</th>
             <th class="col-desc">실습 내용</th>
-            <th class="col-tags">키워드</th>
+            <th class="col-skill">배운 스킬 · 기능 · 기술</th>
             <th class="col-status">상태</th>
           </tr>
         </thead>
         <tbody>
           <tr class="row-done">
-            <td class="col-session"><span class="session-label">세션 A</span></td>
+            <td class="col-no"><span class="session-label">세션 A</span></td>
             <td class="col-icon">🚀</td>
             <td><span class="title-text">웹앱 만들어 GitHub에 배포하기</span></td>
-            <td class="col-desc">클로드로 HTML·CSS 자동 생성 → GitHub Pages로 실제 인터넷에 공개</td>
-            <td><div class="tag-row"><span class="tag tag-g">웹앱</span><span class="tag tag-g">GitHub</span><span class="tag tag-g">배포</span></div></td>
+            <td><span class="desc-text">클로드로 HTML·CSS 자동 생성 → GitHub Pages로 실제 인터넷에 공개</span></td>
+            <td><ul class="skill-list">
+              <li><span>Claude 프롬프트 작성</span> — 원하는 결과를 말로 설명하는 기술</li>
+              <li><span>HTML / CSS 기초 구조</span> — 웹페이지가 만들어지는 원리 이해</li>
+              <li><span>GitHub 저장소 생성</span> — 코드를 저장하고 관리하는 방법</li>
+              <li><span>GitHub Pages 배포</span> — 무료로 웹사이트 공개하기</li>
+            </ul></td>
             <td><span class="status status-done">✓ 완료</span></td>
           </tr>
           <tr class="row-done">
-            <td class="col-session"><span class="session-label">세션 B</span></td>
+            <td class="col-no"><span class="session-label">세션 B</span></td>
             <td class="col-icon">📊</td>
             <td><span class="title-text">클로드 코드로 대시보드 만들기</span></td>
-            <td class="col-desc">데이터 시각화 대시보드를 코드 한 줄 없이 대화로 완성</td>
-            <td><div class="tag-row"><span class="tag tag-g">Claude Code</span><span class="tag tag-g">시각화</span></div></td>
+            <td><span class="desc-text">데이터 시각화 대시보드를 코드 한 줄 없이 대화로 완성</span></td>
+            <td><ul class="skill-list">
+              <li><span>Claude Code 설치 및 실행</span> — 터미널 기반 AI 코딩 환경</li>
+              <li><span>Chart.js / D3 활용</span> — 데이터를 그래프로 표현하는 라이브러리</li>
+              <li><span>반복 수정 프롬프팅</span> — 결과물을 대화로 계속 다듬는 방법</li>
+              <li><span>로컬 파일 실행</span> — 브라우저에서 내 파일 열기</li>
+            </ul></td>
             <td><span class="status status-done">✓ 완료</span></td>
           </tr>
           <tr class="row-done">
-            <td class="col-session"><span class="session-label">세션 C</span></td>
+            <td class="col-no"><span class="session-label">세션 C</span></td>
             <td class="col-icon">💬</td>
             <td><span class="title-text">클로드 코워크로 카카오톡 알림 받기</span></td>
-            <td class="col-desc">AI 자동화 흐름 구성 → 결과를 카카오톡으로 실시간 수신</td>
-            <td><div class="tag-row"><span class="tag tag-g">자동화</span><span class="tag tag-g">카카오톡</span></div></td>
+            <td><span class="desc-text">AI 자동화 흐름 구성 → 결과를 카카오톡으로 실시간 수신</span></td>
+            <td><ul class="skill-list">
+              <li><span>Claude Cowork 세션 설정</span> — AI 에이전트 역할 분담 구성</li>
+              <li><span>카카오 API 연동</span> — 메시지 발송 권한 설정 및 토큰 발급</li>
+              <li><span>MCP(도구 연결) 개념</span> — AI가 외부 서비스를 직접 사용하는 방식</li>
+              <li><span>자동화 트리거 설정</span> — 특정 조건에서 알림 발송하기</li>
+            </ul></td>
             <td><span class="status status-done">✓ 완료</span></td>
           </tr>
           <tr class="row-done">
-            <td class="col-session"><span class="session-label">세션 D</span></td>
+            <td class="col-no"><span class="session-label">세션 D</span></td>
             <td class="col-icon">🗺️</td>
             <td><span class="title-text">여행 일정 짜고 지도에 띄우기</span></td>
-            <td class="col-desc">클로드로 여행 플랜 생성 → 인터랙티브 지도에 경로·명소 시각화</td>
-            <td><div class="tag-row"><span class="tag tag-g">여행</span><span class="tag tag-g">지도</span><span class="tag tag-g">시각화</span></div></td>
+            <td><span class="desc-text">클로드로 여행 플랜 생성 → 인터랙티브 지도에 경로·명소 시각화</span></td>
+            <td><ul class="skill-list">
+              <li><span>구조화된 출력 요청</span> — 표·JSON 형태로 결과 받기</li>
+              <li><span>Leaflet.js / Google Maps API</span> — 웹 지도에 마커·경로 표시</li>
+              <li><span>일정 최적화 프롬프트</span> — 조건(예산·기간·취향)을 담은 질문 작성</li>
+              <li><span>GitHub 업데이트 배포</span> — 기존 사이트에 새 내용 반영하기</li>
+            </ul></td>
             <td><span class="status status-done">✓ 완료</span></td>
           </tr>
         </tbody>
@@ -443,56 +442,115 @@
     </div>
   </div>
 
-  <!-- 1단계 -->
+  <!-- ══ 1단계 ══ -->
   <div class="section">
     <div class="section-header">
       <span class="section-pill pill-plan">1단계</span>
-      <span class="section-title">일상 밀착 실습</span>
-      <span class="section-meta">1 – 4주차</span>
+      <span class="section-title">일상 밀착 실습 — 오늘 배우고 오늘 써먹기</span>
+      <span class="section-meta">1 – 7주차</span>
     </div>
     <div class="tbl-wrap">
       <table>
         <thead>
           <tr>
-            <th class="col-session">주차</th>
+            <th class="col-no">주차</th>
             <th class="col-icon"></th>
             <th class="col-title">주제</th>
             <th class="col-desc">실습 내용</th>
-            <th class="col-tags">키워드</th>
+            <th class="col-skill">배울 스킬 · 기능 · 기술</th>
             <th class="col-status">상태</th>
           </tr>
         </thead>
         <tbody>
           <tr class="row-plan">
-            <td class="col-session"><span class="session-label">1주차</span></td>
+            <td class="col-no"><span class="session-label">1주차</span></td>
             <td class="col-icon">✍️</td>
             <td><span class="title-text">나만의 블로그 글 써서 올리기</span></td>
-            <td class="col-desc">클로드로 글 초안 작성 → 티스토리·브런치·노션에 실제 발행까지</td>
-            <td><div class="tag-row"><span class="tag tag-p">글쓰기</span><span class="tag tag-p">블로그</span><span class="tag tag-p">노션</span></div></td>
+            <td><span class="desc-text">클로드로 글 초안 작성 → 티스토리·브런치·노션에 실제 발행</span></td>
+            <td><ul class="skill-list">
+              <li><span>글쓰기 프롬프트 패턴</span> — 독자·목적·톤을 지정해 원고 받기</li>
+              <li><span>반복 수정 대화법</span> — "더 짧게", "예시 추가" 식으로 다듬기</li>
+              <li><span>티스토리 / 브런치 편집기</span> — 붙여넣기 후 서식 맞추기</li>
+              <li><span>SEO 기초</span> — 제목·소제목·키워드 배치 원리</li>
+            </ul></td>
             <td><span class="status status-soon">예정</span></td>
           </tr>
           <tr class="row-plan">
-            <td class="col-session"><span class="session-label">2주차</span></td>
+            <td class="col-no"><span class="session-label">2주차</span></td>
             <td class="col-icon">▶️</td>
-            <td><span class="title-text">유튜브 영상 요약 & 정리봇 만들기</span></td>
-            <td class="col-desc">영상 링크 넣으면 핵심 요약 + 공부 노트 자동 생성</td>
-            <td><div class="tag-row"><span class="tag tag-p">요약</span><span class="tag tag-p">유튜브</span></div></td>
+            <td><span class="title-text">유튜브 영상 요약 & 공부 노트 만들기</span></td>
+            <td><span class="desc-text">영상 링크 붙여넣기 → 핵심 요약 + 챕터별 노트 자동 생성</span></td>
+            <td><ul class="skill-list">
+              <li><span>자막 추출 방법</span> — YouTube 자막 복사 또는 다운로드</li>
+              <li><span>긴 텍스트 요약 프롬프트</span> — 분량이 많을 때 핵심만 뽑는 방법</li>
+              <li><span>출력 형식 지정</span> — 표·글머리·Q&A 형태로 요청하기</li>
+              <li><span>노션 / 구글 Docs 저장</span> — 정리한 내용 바로 붙여넣기</li>
+            </ul></td>
             <td><span class="status status-soon">예정</span></td>
           </tr>
           <tr class="row-plan">
-            <td class="col-session"><span class="session-label">3주차</span></td>
-            <td class="col-icon">🤖</td>
-            <td><span class="title-text">나만의 챗봇 만들어 친구에게 공유</span></td>
-            <td class="col-desc">요리·여행·육아 전문가 챗봇 제작 → 링크로 누구에게나 공유</td>
-            <td><div class="tag-row"><span class="tag tag-p">챗봇</span><span class="tag tag-p">공유</span></div></td>
-            <td><span class="status status-soon">예정</span></td>
-          </tr>
-          <tr class="row-plan">
-            <td class="col-session"><span class="session-label">4주차</span></td>
+            <td class="col-no"><span class="session-label">3주차</span></td>
             <td class="col-icon">📈</td>
             <td><span class="title-text">엑셀·표 데이터를 AI로 분석하기</span></td>
-            <td class="col-desc">가계부·매출표 업로드 → 인사이트 도출, 차트 자동 생성</td>
-            <td><div class="tag-row"><span class="tag tag-p">엑셀</span><span class="tag tag-p">데이터 분석</span></div></td>
+            <td><span class="desc-text">가계부·매출표 업로드 → 인사이트 도출, 차트 자동 생성</span></td>
+            <td><ul class="skill-list">
+              <li><span>파일 업로드 분석</span> — CSV / 엑셀을 클로드에게 넘기는 방법</li>
+              <li><span>데이터 질문 패턴</span> — "가장 많이 쓴 항목은?", "월별 추이는?" 등</li>
+              <li><span>수식·함수 자동 생성</span> — SUMIF, VLOOKUP 등을 설명으로 요청</li>
+              <li><span>차트 코드 생성</span> — 데이터를 시각화 코드로 변환하기</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-plan">
+            <td class="col-no"><span class="session-label">4주차</span></td>
+            <td class="col-icon">📄</td>
+            <td><span class="title-text">PDF 계약서·문서 읽고 요약하기</span></td>
+            <td><span class="desc-text">임대차계약서·보험약관 PDF → 핵심 조항 정리 + 질문하기</span></td>
+            <td><ul class="skill-list">
+              <li><span>PDF 업로드 기능</span> — 클로드에게 문서 파일 전달하기</li>
+              <li><span>조항별 질의 방법</span> — "불리한 조항이 있나요?" 식 질문</li>
+              <li><span>비교 분석 프롬프트</span> — 두 문서를 나란히 비교 요청</li>
+              <li><span>핵심 요약 양식 만들기</span> — 반복 사용할 요약 템플릿 작성</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-plan">
+            <td class="col-no"><span class="session-label">5주차</span></td>
+            <td class="col-icon">✉️</td>
+            <td><span class="title-text">이메일·보고서·제안서 10초 만에 작성</span></td>
+            <td><span class="desc-text">상황·목적·수신자만 말하면 완성된 문서 즉시 생성</span></td>
+            <td><ul class="skill-list">
+              <li><span>역할 지정 프롬프트</span> — "당신은 비서입니다" 식 페르소나 설정</li>
+              <li><span>톤·격식 조절</span> — 공손체·격식체·캐주얼 스타일 전환</li>
+              <li><span>템플릿 프롬프트 저장</span> — 자주 쓰는 질문을 메모장에 보관</li>
+              <li><span>다국어 번역 활용</span> — 영어 이메일 초안 즉시 작성</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-plan">
+            <td class="col-no"><span class="session-label">6주차</span></td>
+            <td class="col-icon">🤖</td>
+            <td><span class="title-text">나만의 챗봇 만들어 친구에게 공유</span></td>
+            <td><span class="desc-text">요리·여행·육아 전문가 챗봇 제작 → 링크 공유</span></td>
+            <td><ul class="skill-list">
+              <li><span>시스템 프롬프트 설계</span> — 챗봇의 성격·전문 분야·말투 정의</li>
+              <li><span>Claude Project 기능</span> — 맥락을 유지하는 전용 대화 공간</li>
+              <li><span>지식 파일 첨부</span> — PDF·메모를 참고 자료로 등록하기</li>
+              <li><span>링크 공유 방법</span> — 만든 챗봇을 타인이 사용하도록 배포</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-plan">
+            <td class="col-no"><span class="session-label">7주차</span></td>
+            <td class="col-icon">🌐</td>
+            <td><span class="title-text">영어 번역 · 영작 · 교정 마스터</span></td>
+            <td><span class="desc-text">해외 구매·여행 영어 문자, 영문 이메일 즉석 작성 및 교정</span></td>
+            <td><ul class="skill-list">
+              <li><span>번역 품질 조절</span> — 직역 vs. 자연스러운 의역 선택 방법</li>
+              <li><span>영작 교정 프롬프트</span> — 내가 쓴 영어 문장의 오류 찾기</li>
+              <li><span>상황별 영어 패턴</span> — 항공사 컴플레인·예약·쇼핑 문자</li>
+              <li><span>한영 동시 출력</span> — 원문·번역문을 나란히 받는 방법</li>
+            </ul></td>
             <td><span class="status status-soon">예정</span></td>
           </tr>
         </tbody>
@@ -500,56 +558,115 @@
     </div>
   </div>
 
-  <!-- 2단계 -->
+  <!-- ══ 2단계 ══ -->
   <div class="section">
     <div class="section-header">
       <span class="section-pill pill-plan">2단계</span>
-      <span class="section-title">콘텐츠 생산자 되기</span>
-      <span class="section-meta">5 – 8주차</span>
+      <span class="section-title">콘텐츠 생산자 되기 — AI로 나를 브랜딩하기</span>
+      <span class="section-meta">8 – 14주차</span>
     </div>
     <div class="tbl-wrap">
       <table>
         <thead>
           <tr>
-            <th class="col-session">주차</th>
+            <th class="col-no">주차</th>
             <th class="col-icon"></th>
             <th class="col-title">주제</th>
             <th class="col-desc">실습 내용</th>
-            <th class="col-tags">키워드</th>
+            <th class="col-skill">배울 스킬 · 기능 · 기술</th>
             <th class="col-status">상태</th>
           </tr>
         </thead>
         <tbody>
           <tr class="row-plan">
-            <td class="col-session"><span class="session-label">5주차</span></td>
+            <td class="col-no"><span class="session-label">8주차</span></td>
             <td class="col-icon">📱</td>
             <td><span class="title-text">인스타·SNS 콘텐츠 공장 만들기</span></td>
-            <td class="col-desc">주제 하나로 인스타 캡션 10개 + 해시태그 자동 생성</td>
-            <td><div class="tag-row"><span class="tag tag-p">SNS</span><span class="tag tag-p">마케팅</span></div></td>
+            <td><span class="desc-text">주제 하나로 인스타 캡션 10개 + 해시태그 자동 생성</span></td>
+            <td><ul class="skill-list">
+              <li><span>배치 생성 프롬프트</span> — 한 번에 여러 버전 뽑기</li>
+              <li><span>해시태그 전략</span> — 인기 태그 조합 자동 추천</li>
+              <li><span>톤·감성 지정</span> — 브랜드 말투를 일관되게 유지하기</li>
+              <li><span>캘린더 콘텐츠 계획</span> — 한 달치 포스팅 주제 한꺼번에 작성</li>
+            </ul></td>
             <td><span class="status status-soon">예정</span></td>
           </tr>
           <tr class="row-plan">
-            <td class="col-session"><span class="session-label">6주차</span></td>
-            <td class="col-icon">📄</td>
-            <td><span class="title-text">PDF 계약서·문서 읽고 요약하기</span></td>
-            <td class="col-desc">임대차계약서·보험약관 PDF → 핵심 조항을 한눈에 파악</td>
-            <td><div class="tag-row"><span class="tag tag-p">PDF</span><span class="tag tag-p">문서 분석</span></div></td>
-            <td><span class="status status-soon">예정</span></td>
-          </tr>
-          <tr class="row-plan">
-            <td class="col-session"><span class="session-label">7주차</span></td>
-            <td class="col-icon">✉️</td>
-            <td><span class="title-text">이메일·제안서 10초 만에 작성</span></td>
-            <td class="col-desc">상황만 말하면 격식체 이메일·비즈니스 제안서 바로 완성</td>
-            <td><div class="tag-row"><span class="tag tag-p">글쓰기</span><span class="tag tag-p">업무</span></div></td>
-            <td><span class="status status-soon">예정</span></td>
-          </tr>
-          <tr class="row-plan">
-            <td class="col-session"><span class="session-label">8주차</span></td>
+            <td class="col-no"><span class="session-label">9주차</span></td>
             <td class="col-icon">🎨</td>
             <td><span class="title-text">이미지 생성 + 썸네일 디자인</span></td>
-            <td class="col-desc">클로드 + 이미지 AI(Ideogram 등)로 블로그 썸네일 제작</td>
-            <td><div class="tag-row"><span class="tag tag-p">이미지</span><span class="tag tag-p">디자인</span></div></td>
+            <td><span class="desc-text">클로드 + 이미지 AI(Ideogram·Canva AI)로 블로그·SNS 썸네일 제작</span></td>
+            <td><ul class="skill-list">
+              <li><span>이미지 프롬프트 작성</span> — 스타일·구도·색상을 영어로 지시</li>
+              <li><span>Ideogram / Canva AI</span> — 무료 이미지 생성 도구 사용법</li>
+              <li><span>클로드 이미지 분석</span> — 사진 업로드 후 설명·태그 생성</li>
+              <li><span>썸네일 규격 설정</span> — 플랫폼별 사이즈(유튜브·인스타) 최적화</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-plan">
+            <td class="col-no"><span class="session-label">10주차</span></td>
+            <td class="col-icon">🎬</td>
+            <td><span class="title-text">유튜브 스크립트 & 쇼츠 대본 쓰기</span></td>
+            <td><span class="desc-text">주제·길이·채널 분위기 입력 → 오프닝·본문·아웃트로 완성 대본 생성</span></td>
+            <td><ul class="skill-list">
+              <li><span>스크립트 구조 프롬프트</span> — Hook·핵심·CTA 구조로 요청</li>
+              <li><span>구어체 변환</span> — 딱딱한 글을 말하듯 자연스럽게 바꾸기</li>
+              <li><span>쇼츠·릴스 포맷</span> — 60초 안에 임팩트 있는 구성 짜기</li>
+              <li><span>타임스탬프 자동 생성</span> — 챕터 구분 설명 만들기</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-plan">
+            <td class="col-no"><span class="session-label">11주차</span></td>
+            <td class="col-icon">🏪</td>
+            <td><span class="title-text">내 사업·쇼핑몰 소개 랜딩 페이지 만들기</span></td>
+            <td><span class="desc-text">업종·서비스 설명 → 랜딩 페이지 자동 생성 → GitHub 배포 → 도메인 연결</span></td>
+            <td><ul class="skill-list">
+              <li><span>랜딩 페이지 구조 설계</span> — 헤드라인·혜택·후기·CTA 섹션 구성</li>
+              <li><span>카피라이팅 프롬프트</span> — 고객 감성을 자극하는 문구 생성</li>
+              <li><span>도메인 연결(CNAME)</span> — 구매한 도메인을 GitHub Pages에 연결</li>
+              <li><span>모바일 반응형 확인</span> — 스마트폰에서 잘 보이는지 테스트</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-plan">
+            <td class="col-no"><span class="session-label">12주차</span></td>
+            <td class="col-icon">📰</td>
+            <td><span class="title-text">AI로 뉴스레터 만들어 구독자에게 발송</span></td>
+            <td><span class="desc-text">주제별 뉴스 수집 → 클로드 요약 → Stibee·Mailchimp로 발송</span></td>
+            <td><ul class="skill-list">
+              <li><span>정보 수집 프롬프트</span> — 여러 출처 내용을 하나로 요약 정리</li>
+              <li><span>뉴스레터 형식 설계</span> — 섹션·제목·본문·링크 구조 만들기</li>
+              <li><span>Stibee / Mailchimp</span> — 무료 이메일 발송 서비스 연동</li>
+              <li><span>구독 폼 삽입</span> — 내 사이트·블로그에 구독 버튼 붙이기</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-plan">
+            <td class="col-no"><span class="session-label">13주차</span></td>
+            <td class="col-icon">🎙️</td>
+            <td><span class="title-text">팟캐스트 · 보이스 콘텐츠 기획 & 스크립트</span></td>
+            <td><span class="desc-text">에피소드 기획 → 대화형 스크립트 → TTS로 샘플 음성 제작</span></td>
+            <td><ul class="skill-list">
+              <li><span>대화체 스크립트 작성</span> — 두 사람이 주고받는 자연스러운 형식</li>
+              <li><span>TTS(텍스트 음성 변환)</span> — ElevenLabs·Clova 등 AI 목소리 생성</li>
+              <li><span>에피소드 시리즈 기획</span> — 10화 분량 주제 목록 한번에 생성</li>
+              <li><span>쇼노트 자동 작성</span> — 요약·타임스탬프·링크 정리</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-plan">
+            <td class="col-no"><span class="session-label">14주차</span></td>
+            <td class="col-icon">📚</td>
+            <td><span class="title-text">전자책 · PDF 가이드 만들어 판매하기</span></td>
+            <td><span class="desc-text">주제 선정 → 목차·본문 생성 → PDF 디자인 → 크몽·스마트스토어 등록</span></td>
+            <td><ul class="skill-list">
+              <li><span>목차 기획 프롬프트</span> — 챕터 구성과 분량 계획 세우기</li>
+              <li><span>섹션별 원고 생성</span> — 목차를 하나씩 채워가는 방법</li>
+              <li><span>Canva PDF 디자인</span> — 표지·본문 레이아웃 꾸미기</li>
+              <li><span>디지털 상품 등록</span> — 크몽·클래스101·스마트스토어 업로드</li>
+            </ul></td>
             <td><span class="status status-soon">예정</span></td>
           </tr>
         </tbody>
@@ -557,56 +674,102 @@
     </div>
   </div>
 
-  <!-- 3단계 -->
+  <!-- ══ 3단계 ══ -->
   <div class="section">
     <div class="section-header">
       <span class="section-pill pill-adv">3단계</span>
-      <span class="section-title">자동화로 시간 벌기</span>
-      <span class="section-meta">9 – 12주차</span>
+      <span class="section-title">자동화로 시간 벌기 — AI가 일하는 동안 나는 쉰다</span>
+      <span class="section-meta">15 – 20주차</span>
     </div>
     <div class="tbl-wrap">
       <table>
         <thead>
           <tr>
-            <th class="col-session">주차</th>
+            <th class="col-no">주차</th>
             <th class="col-icon"></th>
             <th class="col-title">주제</th>
             <th class="col-desc">실습 내용</th>
-            <th class="col-tags">키워드</th>
+            <th class="col-skill">배울 스킬 · 기능 · 기술</th>
             <th class="col-status">상태</th>
           </tr>
         </thead>
         <tbody>
           <tr class="row-adv">
-            <td class="col-session"><span class="session-label">9주차</span></td>
+            <td class="col-no"><span class="session-label">15주차</span></td>
             <td class="col-icon">⏰</td>
-            <td><span class="title-text">뉴스 자동 요약 → 매일 아침 카톡</span></td>
-            <td class="col-desc">관심 키워드 뉴스 수집 + 요약 → 스케줄러로 매일 카카오톡 발송</td>
-            <td><div class="tag-row"><span class="tag tag-b">자동화</span><span class="tag tag-b">스케줄러</span><span class="tag tag-b">카카오톡</span></div></td>
+            <td><span class="title-text">뉴스 자동 요약 → 매일 아침 카톡 받기</span></td>
+            <td><span class="desc-text">관심 키워드 뉴스 수집 + 요약 → 스케줄러로 매일 카카오톡 자동 발송</span></td>
+            <td><ul class="skill-list">
+              <li><span>Claude Cowork 스케줄러</span> — 정해진 시간에 자동 실행 설정</li>
+              <li><span>뉴스 RSS / 네이버 검색 API</span> — 키워드 뉴스 자동 수집</li>
+              <li><span>요약 후 발송 파이프라인</span> — 수집 → 요약 → 전송 자동 연결</li>
+              <li><span>카카오 메시지 템플릿</span> — 매일 동일한 형식으로 발송하기</li>
+            </ul></td>
             <td><span class="status status-soon">예정</span></td>
           </tr>
           <tr class="row-adv">
-            <td class="col-session"><span class="session-label">10주차</span></td>
-            <td class="col-icon">🏪</td>
-            <td><span class="title-text">내 사업·쇼핑몰 소개 페이지 만들기</span></td>
-            <td class="col-desc">랜딩 페이지 자동 생성 → GitHub Pages 배포 → 실제 도메인 연결</td>
-            <td><div class="tag-row"><span class="tag tag-b">랜딩페이지</span><span class="tag tag-b">배포</span></div></td>
-            <td><span class="status status-soon">예정</span></td>
-          </tr>
-          <tr class="row-adv">
-            <td class="col-session"><span class="session-label">11주차</span></td>
+            <td class="col-no"><span class="session-label">16주차</span></td>
             <td class="col-icon">📋</td>
             <td><span class="title-text">구글 시트 + AI로 업무 자동화</span></td>
-            <td class="col-desc">구글 시트 데이터 → 자동 분류·정리·리포트 생성</td>
-            <td><div class="tag-row"><span class="tag tag-b">구글시트</span><span class="tag tag-b">자동화</span></div></td>
+            <td><span class="desc-text">구글 시트 데이터 → 자동 분류·정리·리포트 생성 → 이메일 발송</span></td>
+            <td><ul class="skill-list">
+              <li><span>Google Sheets API 기초</span> — 시트 데이터를 AI에게 전달하기</li>
+              <li><span>Apps Script 활용</span> — 버튼 하나로 반복 작업 실행</li>
+              <li><span>데이터 분류 자동화</span> — 입력된 내용을 AI가 카테고리별 정렬</li>
+              <li><span>자동 이메일 보고서</span> — 분석 결과를 이메일로 자동 전송</li>
+            </ul></td>
             <td><span class="status status-soon">예정</span></td>
           </tr>
           <tr class="row-adv">
-            <td class="col-session"><span class="session-label">12주차</span></td>
+            <td class="col-no"><span class="session-label">17주차</span></td>
+            <td class="col-icon">💼</td>
+            <td><span class="title-text">고객 문의 자동 응대 봇 만들기</span></td>
+            <td><span class="desc-text">FAQ 문서 업로드 → 자동 답변 봇 구성 → 카카오채널·웹사이트에 연동</span></td>
+            <td><ul class="skill-list">
+              <li><span>RAG(검색 증강 생성) 개념</span> — 내 문서를 참조해 답변하는 방식</li>
+              <li><span>FAQ 문서 구조화</span> — AI가 잘 이해하는 형식으로 정리</li>
+              <li><span>카카오 비즈니스 채널 연동</span> — 채널에 자동응답 봇 붙이기</li>
+              <li><span>답변 품질 테스트</span> — 다양한 질문으로 봇 성능 점검</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-adv">
+            <td class="col-no"><span class="session-label">18주차</span></td>
+            <td class="col-icon">🛒</td>
+            <td><span class="title-text">쇼핑몰 상품 설명 대량 자동 생성</span></td>
+            <td><span class="desc-text">상품명·스펙 입력 → 매력적인 상품 설명·리뷰 답변 자동 생성</span></td>
+            <td><ul class="skill-list">
+              <li><span>배치 처리 프롬프트</span> — 상품 목록을 한번에 처리하기</li>
+              <li><span>판매 카피 공식</span> — 혜택·감성·긴급성을 담은 문구 패턴</li>
+              <li><span>리뷰 답변 자동화</span> — 별점·키워드 기반 맞춤 답변 생성</li>
+              <li><span>스마트스토어 등록 형식</span> — 복사 붙여넣기 바로 가능한 포맷</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-adv">
+            <td class="col-no"><span class="session-label">19주차</span></td>
+            <td class="col-icon">📊</td>
+            <td><span class="title-text">AI 주식·부동산 정보 리포트 자동화</span></td>
+            <td><span class="desc-text">관심 종목·지역 입력 → 뉴스·공시 수집 → 요약 리포트 정기 발송</span></td>
+            <td><ul class="skill-list">
+              <li><span>금융 데이터 API 연동</span> — 주가·공시 정보 자동 수집</li>
+              <li><span>리포트 템플릿 설계</span> — 매주 동일한 형식으로 요약 출력</li>
+              <li><span>정기 발송 스케줄링</span> — 월·수·금 특정 시간에 자동 전송</li>
+              <li><span>면책 문구 자동 삽입</span> — 투자 책임 관련 안내 자동 추가</li>
+            </ul></td>
+            <td><span class="status status-soon">예정</span></td>
+          </tr>
+          <tr class="row-adv">
+            <td class="col-no"><span class="session-label">20주차</span></td>
             <td class="col-icon">🏆</td>
-            <td><span class="title-text">나만의 AI 비서 워크플로 완성 · 발표</span></td>
-            <td class="col-desc">각자 반복 업무를 AI로 대체하는 개인 자동화 설계 + 최종 발표</td>
-            <td><div class="tag-row"><span class="tag tag-b">종합</span><span class="tag tag-b">발표</span><span class="tag tag-b">수료</span></div></td>
+            <td><span class="title-text">나만의 AI 비서 완성 · 최종 발표</span></td>
+            <td><span class="desc-text">각자 반복 업무를 AI로 대체하는 개인 자동화 시스템 설계 + 발표</span></td>
+            <td><ul class="skill-list">
+              <li><span>전체 워크플로 설계</span> — 입력→처리→출력 자동화 흐름 그리기</li>
+              <li><span>도구 조합 전략</span> — 클로드·API·시트·카톡을 연결하는 방법</li>
+              <li><span>발표 자료 AI 작성</span> — 클로드로 슬라이드 스크립트 생성</li>
+              <li><span>유지보수 방법</span> — 자동화 시스템 지속 관리·개선하기</li>
+            </ul></td>
             <td><span class="status status-soon">예정</span></td>
           </tr>
         </tbody>
@@ -629,7 +792,7 @@
         <div class="tip-num">02</div>
         <div class="tip-body">
           <strong>단톡방 인증</strong>
-          <span>실습 결과를 카톡 단톡방에 올리게 하면 성취감과 출석률이 함께 오릅니다</span>
+          <span>실습 결과를 카톡 단톡방에 올리면 성취감과 출석률이 함께 오릅니다</span>
         </div>
       </div>
       <div class="tip">
@@ -642,7 +805,7 @@
       <div class="tip">
         <div class="tip-num">04</div>
         <div class="tip-body">
-          <strong>12주차 수료 발표</strong>
+          <strong>20주차 수료 발표</strong>
           <span>내 AI 비서 발표로 마무리하면 전체 과정 동기부여가 극대화됩니다</span>
         </div>
       </div>
